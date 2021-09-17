@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Link, Route, Switch } from 'react-router-dom';
+import SignupForm from './components/SignupForm';
+import AddForm from './components/AddForm';
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{border: 'dotted black 5px', padding: '20px'}}>
+        <Link to='/signup' style={{ padding: '20px' }}>Sign up</Link>
+        <Link to='/add-item'>Create a selling item</Link>
+      </div>
+
+
+      <Switch>
+        <Route path='/signup'>
+          <SignupForm />
+        </Route>
+
+        <Route path='/add-item'>
+          <AddForm />
+        </Route>
+
+        <Route path='/'>
+          <Home />
+        </Route>
+      </Switch>
     </div>
   );
 }
